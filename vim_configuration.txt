@@ -1,0 +1,21 @@
+set clipboard=unnamed
+syntax on
+set tabstop=4
+set shiftwidth=2
+set expandtab
+set ai
+set number
+set hlsearch
+set ruler
+
+highlight Comment ctermfg=green
+
+set backspace=indent,eol,start
+
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}
+inoremap {;<CR> {<CR>};O
