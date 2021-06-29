@@ -1,21 +1,124 @@
-set clipboard=unnamed
+call plug#begin('~/.vim/autoload')
+    Plug 'junegunn/vim-easy-align'
+    Plug 'joshdick/onedark.vim'
+    Plug 'tpope/vim-surround'
+    Plug 'scrooloose/syntastic'
+    Plug 'scrooloose/nerdtree'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+call plug#end()
+
+set nocompatible
+filetype plugin indent on
 syntax on
+set encoding=UTF-8
 set tabstop=4
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
-set ai
+set smartindent
 set number
+set relativenumber
+set mouse=a
 set hlsearch
-set ruler
+set incsearch
+set hidden
+set fdm=indent
+set foldlevelstart=99
+set ignorecase
+set smartcase
+set colorcolumn=120
+set splitbelow splitright " set default position for where a split open
 
-highlight Comment ctermfg=green
+" colorscheme
+set termguicolors
+colorscheme onedark
 
-set backspace=indent,eol,start
+" NERDTree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}
-inoremap {;<CR> {<CR>};O
+" Start NERDTree and put the cursor back in the other window.
+" autocmd VimEnter * NERDTree | wincmd p
+
+" Keybindings
+"
+" leader keys
+let mapleader=" "
+let mpalocalleader="\\"
+
+" faster way to ESC from insert mode
+map kj <ESC>
+
+"open config file in a new tab
+nnoremap <leader>ev :tabedit $MYVIMRC<CR>
+
+" reload config file
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" clear search highlights
+nnoremap <silent> <leader>a :<C-u>nohlsearch<CR><C-l>
+
+" navigate between buffers
+nnoremap <leader>j :bprevious<CR>
+nnoremap <leader>k :bnext<CR>
+nnoremap <leader>h :bfirst<CR>
+nnoremap <leader>l :blast<CR>
+
+" show all buffers and let user choose one
+nnoremap <leader>i :ls<CR> :b<Space>
+
+" delete current buffer
+nnoremap <leader>dd :bd<CR>
+
+" close current window
+nnoremap <leader>c :q<CR>
+
+" write current buffer
+nnoremap <leader>w :write<CR>
+
+" navigate between tabs
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+
+" toggle highlight current line
+nnoremap <leader>ar :setlocal cursorline!<CR>
+
+" toggle highlight current column
+nnoremap <leader>ac :setlocal cursorcolumn!<CR>
+
+" switch between two buffer
+nnoremap <leader><tab> <C-^>
+
+" add current line to X Clipboard
+nnoremap <leader>yy :normal "+yy<CR>
+
+" add current selected test to X clipboard
+xnoremap <leader>yy :normal gv"+y<CR>
+
+" jump up 4 lines in normal mode
+nnoremap <silent> <C-k> :normal 4k<CR>
+
+" jump down 4 lines in normal mode
+nnoremap <silent> <C-j> :normal 4j<CR>
+
+" jump up 4 lines in visual mode
+nnoremap <silent> <C-k> :normal gv4k<CR>
+
+" jump down 4 lines in visual mode
+nnoremap <silent> <C-j> :normal gv4j<CR>
+
+" colorschemes
+set termguicolors
+
+augroup exe_code
+    autocmd!
+
+    " execute python code
+    autocmd FileType python nnoremap <buffer> <localleader>r
+            \ :sp<CR> :term python3 %<CR> :startinsert<CR>
+augroup END
