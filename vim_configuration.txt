@@ -6,6 +6,10 @@ call plug#begin('~/.vim/autoload')
     Plug 'scrooloose/nerdtree'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'morhetz/gruvbox'
+    Plug 'shinchu/lightline-gruvbox.vim'
+    Plug 'neoclide/coc.nvim'
 call plug#end()
 
 set nocompatible
@@ -30,8 +34,10 @@ set colorcolumn=120
 set splitbelow splitright " set default position for where a split open
 
 " colorscheme
-set termguicolors
-colorscheme onedark
+colorscheme gruvbox 
+set bg=dark
+let g:lightline={}
+let g:lightline.colorscheme='gruvbox'
 
 " NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -117,3 +123,13 @@ set termguicolors
 
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+
+" split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" prettier stuff 
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
