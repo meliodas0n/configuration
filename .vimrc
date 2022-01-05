@@ -10,6 +10,10 @@ call plug#begin('~/.vim/autoload')
     Plug 'morhetz/gruvbox'
     Plug 'shinchu/lightline-gruvbox.vim'
     Plug 'neoclide/coc.nvim'
+    Plug 'https://github.com/ap/vim-css-color'
+    Plug 'https://github.com/terryma/vim-multiple-cursors'
+    Plug 'https://github.com/ryanoasis/vim-devicons'
+    Plug 'https://github.com/tc50cal/vim-terminal'
 call plug#end()
 
 set nocompatible
@@ -34,10 +38,13 @@ set colorcolumn=120
 set splitbelow splitright " set default position for where a split open
 
 " colorscheme
-colorscheme gruvbox 
+colorscheme molokai 
 set bg=dark
 let g:lightline={}
-let g:lightline.colorscheme='gruvbox'
+"let g:lightline.colorscheme='gruvbox'
+
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 " NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -131,5 +138,5 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" prettier stuff 
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+" tab to autofinish the highlighted suggestion
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
