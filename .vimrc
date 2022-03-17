@@ -38,6 +38,7 @@ set colorcolumn=120
 set splitbelow splitright " set default position for where a split open
 
 " colorscheme
+" colorscheme gruvbox
 colorscheme molokai 
 set bg=dark
 let g:lightline={}
