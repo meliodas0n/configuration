@@ -14,6 +14,9 @@ call plug#begin('~/.vim/autoload')
     Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/ryanoasis/vim-devicons'
     Plug 'https://github.com/tc50cal/vim-terminal'
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'tribela/vim-transparent'
+    Plug 'flazz/vim-colorschemes'
 call plug#end()
 
 set nocompatible
@@ -37,15 +40,29 @@ set smartcase
 set colorcolumn=120
 set splitbelow splitright " set default position for where a split open
 
-" colorscheme
-" colorscheme gruvbox
-colorscheme molokai 
-set bg=dark
-let g:lightline={}
-"let g:lightline.colorscheme='gruvbox'
+" colorscheme transparent
 
-let g:molokai_original = 1
-let g:rehash256 = 1
+" colorscheme nord
+
+" colorscheme for sunbather
+" colorscheme sunbather
+" set background=dark
+
+" colorscheme for two-firewatch
+" set background=dark
+" let g:two_firewatch_italics=1
+" colo two-firewatch
+" let g:airline_theme='twofirewatch'     seems not working
+
+" colorscheme for gruvbox
+" colorscheme gruvbox
+" set bg=dark
+
+" colorscheme for molokai
+" let g:lightline={}
+" colorscheme molokai 
+" let g:molokai_original = 1
+" let g:rehash256 = 1
 
 " NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -141,3 +158,7 @@ nnoremap <C-H> <C-W><C-H>
 
 " tab to autofinish the highlighted suggestion
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+
+" transparency stuff
+" This makes vim transparent in terminal by default
+hi Normal ctermbg=NONE guibg=NONE
